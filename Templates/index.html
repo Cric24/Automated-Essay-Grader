@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Essay Grader</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Automated Essay Grader</h1>
+        <form method="POST">
+            <textarea name="essay" placeholder="Enter your essay here..." required></textarea>
+            <button type="submit">Grade Essay</button>
+        </form>
+        {% if score is not none %}
+            <h2>Predicted Score: {{ score }}</h2>
+            {% if feedback %}
+                <h3>Feedback:</h3>
+                <ul>
+                    {% for comment in feedback %}
+                        <li>{{ comment }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
